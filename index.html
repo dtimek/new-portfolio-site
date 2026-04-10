@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dan Timek — UX Design Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+/* ─── RESET & BASE ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #0a0a0a;
+  --bg-card:     #141414;
+  --bg-surface:  #1e1e1e;
+  --accent:      #00c2b5;
+  --accent-dim:  #009d92;
+  --text:        #f2f2f2;
+  --text-sec:    #999999;
+  --text-muted:  #555555;
+  --border:      rgba(255,255,255,0.08);
+  --radius:      16px;
+  --nav-h:       72px;
+  --ease:        cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+/* ─── NAVIGATION ─────────────────────────────────────────────────────── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(10,10,10,0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s var(--ease);
+}
+.nav-logo {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 36px; }
+.nav-links a {
+  font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--text-sec);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border: 1px solid var(--accent);
+  border-radius: 100px;
+  color: var(--accent);
+  transition: all 0.2s var(--ease);
+}
+.nav-cta:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ─── HERO ───────────────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: calc(var(--nav-h) + 60px) 48px 80px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 60% 50%,
+    rgba(0,194,181,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 32px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  max-width: 900px;
+  margin-bottom: 28px;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-body {
+  font-size: 17px; font-weight: 400;
+  color: var(--text-sec);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 15px 32px;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 14px; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  border-radius: 100px;
+  transition: all 0.2s var(--ease);
+}
+.btn-primary:hover { background: #00aaa0; transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 15px 32px;
+  border: 1px solid var(--border);
+  color: var(--text-sec);
+  font-size: 14px; font-weight: 500;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  border-radius: 100px;
+  transition: all 0.2s var(--ease);
+}
+.btn-secondary:hover { border-color: var(--text-sec); color: var(--text); }
+
+.hero-stats {
+  display: flex; gap: 48px; flex-wrap: wrap;
+  margin-top: 72px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+.stat-num {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 36px; color: var(--text);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* ─── SECTION LAYOUT ─────────────────────────────────────────────────── */
+section { padding: 100px 48px; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 20px;
+}
+.section-label::before {
+  content: '';
+  width: 24px; height: 1px; background: var(--accent);
+}
+.section-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 400; line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 16px; color: var(--text-sec);
+  max-width: 560px; line-height: 1.7;
+}
+
+/* ─── WORK GRID ──────────────────────────────────────────────────────── */
+#work { padding-top: 80px; }
+.work-header {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; flex-wrap: wrap; gap: 24px;
+  margin-bottom: 56px;
+}
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+/* tile sizing */
+.tile:nth-child(1) { grid-column: span 7; }
+.tile:nth-child(2) { grid-column: span 5; }
+.tile:nth-child(3) { grid-column: span 4; }
+.tile:nth-child(4) { grid-column: span 4; }
+.tile:nth-child(5) { grid-column: span 4; }
+.tile:nth-child(6) { grid-column: span 4; }
+.tile:nth-child(7) { grid-column: span 4; }
+.tile:nth-child(8) { grid-column: span 4; }
+.tile:nth-child(9) { grid-column: span 7; }
+
+.tile {
+  position: relative; overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  aspect-ratio: 4/3;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.tile:nth-child(1) { aspect-ratio: 16/9; }
+.tile:nth-child(2) { aspect-ratio: 5/4; }
+.tile:nth-child(6),
+.tile:nth-child(7),
+.tile:nth-child(8) { aspect-ratio: 4/3; }
+.tile:nth-child(9) { aspect-ratio: 16/9; }
+
+.tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+}
+
+/* tile cover image */
+.tile-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: top center;
+  transition: transform 0.55s var(--ease), filter 0.55s var(--ease);
+  filter: brightness(0.65) saturate(0.9);
+}
+.tile:hover .tile-img {
+  transform: scale(1.04);
+  filter: brightness(0.45) saturate(0.8);
+}
+
+/* placeholder tiles */
+.tile-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-surface) 100%);
+}
+.tile-placeholder-icon {
+  font-size: 40px; opacity: 0.2; margin-bottom: 12px;
+}
+.tile-placeholder-text {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* tile overlay */
+.tile-overlay {
+  position: absolute; inset: 0;
+  padding: 28px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  background: linear-gradient(to top,
+    rgba(10,10,10,0.96) 0%,
+    rgba(10,10,10,0.5) 50%,
+    transparent 100%);
+  opacity: 1;
+  transition: opacity 0.3s var(--ease);
+}
+
+.tile-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 12px;
+  transform: translateY(4px);
+  transition: transform 0.3s var(--ease);
+}
+.tile:hover .tile-tags { transform: translateY(0); }
+.tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: rgba(0,194,181,0.12);
+  color: var(--accent);
+  border: 1px solid rgba(0,194,181,0.25);
+}
+.tile-company {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.tile-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 400; line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.tile-desc {
+  font-size: 13px; color: var(--text-sec);
+  line-height: 1.6;
+  max-height: 0; overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s var(--ease), opacity 0.3s var(--ease);
+}
+.tile:hover .tile-desc {
+  max-height: 80px;
+  opacity: 1;
+}
+.tile-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent);
+  margin-top: 14px;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.tile:hover .tile-cta { opacity: 1; transform: translateY(0); }
+.tile-cta-arrow { transition: transform 0.2s; }
+.tile:hover .tile-cta-arrow { transform: translateX(4px); }
+
+/* coming-soon overlay */
+.tile-coming-soon {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 12px;
+}
+.coming-badge {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 16px; border-radius: 100px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+/* ─── ABOUT ──────────────────────────────────────────────────────────── */
+#about {
+  background: var(--bg-surface);
+  border-radius: 32px;
+  margin: 0 24px;
+}
+.about-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: center;
+}
+.about-visual {
+  position: relative;
+  border-radius: 20px; overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.about-monogram {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 120px; font-style: italic;
+  color: var(--accent);
+  opacity: 0.18;
+  user-select: none;
+}
+.about-label {
+  position: absolute; bottom: 24px; left: 24px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.about-body { font-size: 16px; color: var(--text-sec); line-height: 1.8; }
+.about-body p + p { margin-top: 18px; }
+.about-body strong { color: var(--text); font-weight: 600; }
+
+.skills-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px; margin-top: 36px;
+}
+.skill-chip {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 12px; font-weight: 500;
+  color: var(--text-sec);
+}
+.skill-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0;
+}
+
+/* ─── PROCESS ────────────────────────────────────────────────────────── */
+#process { text-align: center; }
+.process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px; margin-top: 64px;
+}
+.process-step {
+  padding: 36px 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.3s;
+}
+.process-step:hover { border-color: rgba(0,194,181,0.35); }
+.step-num {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 48px; font-style: italic;
+  color: var(--accent); opacity: 0.4;
+  line-height: 1; margin-bottom: 16px;
+}
+.step-title {
+  font-size: 16px; font-weight: 600; color: var(--text);
+  margin-bottom: 10px;
+}
+.step-body { font-size: 13px; color: var(--text-sec); line-height: 1.7; }
+
+/* ─── CONTACT ────────────────────────────────────────────────────────── */
+#contact {
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+.contact-email {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-style: italic; color: var(--accent);
+  margin: 20px 0 32px;
+  transition: opacity 0.2s;
+  display: inline-block;
+}
+.contact-email:hover { opacity: 0.8; }
+.contact-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+.contact-link {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--text-muted);
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  padding-bottom: 2px;
+}
+.contact-link:hover { color: var(--text); border-color: var(--text); }
+
+/* ─── FOOTER ─────────────────────────────────────────────────────────── */
+footer {
+  padding: 32px 48px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-copy { font-size: 13px; color: var(--text-muted); }
+.footer-made { font-size: 13px; color: var(--text-muted); }
+
+/* ─── LIGHTBOX / MODAL ───────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(10,10,10,0.98);
+  display: flex; flex-direction: column;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s var(--ease);
+}
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+
+/* Header — compact meta row */
+.modal-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  padding: 20px 40px 16px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.modal-company {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 4px;
+}
+.modal-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 22px; font-weight: 400; color: var(--text); margin-bottom: 10px;
+}
+.modal-pills-row {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.modal-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.modal-roleyear { font-size: 12px; color: var(--text-sec); }
+.modal-header-controls {
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-top: 2px;
+}
+.modal-proj-nav {
+  width: 40px; height: 40px;
+  border-radius: 50%; border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-sec); font-size: 18px;
+  transition: all 0.2s;
+}
+.modal-proj-nav:hover { border-color: var(--accent); color: var(--accent); }
+.modal-proj-nav:disabled { opacity: 0.2; cursor: default; pointer-events: none; }
+.modal-close {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 50%; border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-sec); font-size: 20px;
+  transition: all 0.2s;
+}
+.modal-close:hover { border-color: var(--text); color: var(--text); transform: rotate(90deg); }
+
+/* Image viewer — fills all remaining vertical space, full width */
+.modal-viewer {
+  flex: 1; position: relative; min-height: 0;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; background: #080808;
+}
+.modal-img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Nav arrows */
+.modal-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(10,10,10,0.85);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text); font-size: 20px;
+  transition: all 0.2s; z-index: 10;
+}
+.modal-nav:hover { border-color: var(--accent); color: var(--accent); }
+.modal-prev { left: 16px; }
+.modal-next { right: 16px; }
+
+/* Footer — thumbnails + About link */
+.modal-footer {
+  display: flex; align-items: center;
+  padding: 12px 40px; gap: 20px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.modal-thumbs {
+  display: flex; gap: 8px; overflow-x: auto; flex: 1;
+  scrollbar-width: none;
+}
+.modal-thumbs::-webkit-scrollbar { display: none; }
+.modal-thumb {
+  width: 72px; height: 50px; flex-shrink: 0;
+  border-radius: 6px; overflow: hidden; cursor: pointer;
+  border: 2px solid transparent; opacity: 0.4;
+  transition: all 0.2s;
+}
+.modal-thumb:hover { opacity: 0.75; }
+.modal-thumb.active { border-color: var(--accent); opacity: 1; }
+.modal-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+.modal-about-link {
+  flex-shrink: 0;
+  font-size: 13px; font-weight: 500; color: var(--accent);
+  text-decoration: underline; text-underline-offset: 3px;
+  cursor: pointer; white-space: nowrap; transition: color 0.2s;
+}
+.modal-about-link:hover { color: var(--text); }
+
+/* About popup — floats over the viewer */
+.about-popup {
+  position: absolute; inset: 0; z-index: 20;
+  background: rgba(10,10,10,0.94);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s var(--ease);
+}
+.about-popup.open { opacity: 1; pointer-events: auto; }
+.about-popup-inner {
+  max-width: 600px; width: 90%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px; padding: 48px;
+  position: relative;
+}
+.about-popup-close {
+  position: absolute; top: 20px; right: 20px;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-sec); font-size: 16px;
+  cursor: pointer; transition: all 0.2s;
+}
+.about-popup-close:hover { border-color: var(--text); color: var(--text); }
+.about-popup-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+}
+.about-popup-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 22px; color: var(--text); margin-bottom: 20px;
+}
+.about-popup-desc {
+  font-size: 14px; color: var(--text-sec); line-height: 1.75; margin-bottom: 28px;
+}
+.about-popup-contrib-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;
+}
+.about-popup-contrib { font-size: 13px; color: var(--text-sec); line-height: 1.9; }
+
+/* ─── UTILITY ────────────────────────────────────────────────────────── */
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; }
+
+@media (max-width: 1100px) {
+  .about-inner { grid-template-columns: 1fr; }
+  .about-visual { display: none; }
+  .tile:nth-child(1) { grid-column: span 12; }
+  .tile:nth-child(2) { grid-column: span 12; }
+  .tile:nth-child(3),
+  .tile:nth-child(4),
+  .tile:nth-child(5) { grid-column: span 6; }
+  .tile:nth-child(6),
+  .tile:nth-child(7),
+  .tile:nth-child(8) { grid-column: span 6; }
+  .tile:nth-child(9) { grid-column: span 12; }
+}
+@media (max-width: 720px) {
+  section { padding: 64px 24px; }
+  .nav { padding: 0 24px; }
+  .hero { padding: calc(var(--nav-h) + 40px) 24px 60px; }
+  .tile { grid-column: span 12 !important; aspect-ratio: 4/3 !important; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .modal-header { padding: 16px 20px 12px; }
+  .modal-footer { padding: 10px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ──────────────────────────────────────────────────────── -->
+<nav class="nav">
+  <a href="#" class="nav-logo">Daniel <span>Timek</span></a>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────────────────────── -->
+<header class="hero">
+  <p class="hero-eyebrow">UX Design Portfolio</p>
+  <h1 class="hero-title">
+    Designing systems<br>that <em>actually</em><br>get used.
+  </h1>
+  <p class="hero-body">
+    Senior UX designer with a decade of experience building internal analyst
+    tools, enterprise platforms, and consumer-facing apps for organizations
+    where the stakes are high and the data is complex.
+  </p>
+  <div class="hero-actions">
+    <a href="#work" class="btn-primary">
+      View Portfolio
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <a href="#about" class="btn-secondary">About Me</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div>
+      <div class="stat-num">9</div>
+      <div class="stat-label">Portfolio</div>
+    </div>
+    <div>
+      <div class="stat-num">4</div>
+      <div class="stat-label">Industries</div>
+    </div>
+    <div>
+      <div class="stat-num">PM → UX</div>
+      <div class="stat-label">Dual Background</div>
+    </div>
+  </div>
+</header>
+
+<!-- ── WORK ─────────────────────────────────────────────────────────────── -->
+<section id="work">
+  <div class="work-header">
+    <div>
+      <p class="section-label">Selected Work</p>
+      <h2 class="section-title">Portfolio</h2>
+    </div>
+    <p class="section-sub" style="margin:0">
+      Enterprise platforms, mobile apps, and government tools —
+      designed under real constraints for real analysts.
+    </p>
+  </div>
+
+  <div class="project-grid" id="projectGrid">
+    <!-- tiles injected by JS -->
+  </div>
+</section>
+
+<!-- ── ABOUT ─────────────────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-visual">
+      <div class="about-monogram">DT</div>
+      <div class="about-label">Dan Timek — UX Designer</div>
+    </div>
+    <div>
+      <p class="section-label">About Me</p>
+      <h2 class="section-title">Designer<br>with range.</h2>
+      <div class="about-body">
+        <p>
+          I started as a <strong>UX designer</strong> and have been a
+          <strong>product manager</strong> — which means I can hold a P&L
+          conversation with a CFO and sketch wireframes in the same afternoon.
+          I thrive at the intersection of complex data and human decision-making.
+        </p>
+        <p>
+          My work spans <strong>Wall Street risk platforms</strong>, a
+          <strong>Federal Reserve supervisory tool</strong>,
+          <strong>consumer mobile apps</strong> serving hundreds of thousands of
+          test-takers, and <strong>healthcare systems</strong> in emerging markets.
+          What unifies them: careful research, opinionated information architecture,
+          and a bias toward shipping.
+        </p>
+        <p>
+          I run design sprints, write PRDs when no one else will, and have never
+          once used the phrase "let's circle back on that."
+        </p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-chip"><div class="skill-dot"></div>Figma &amp; Sketch</div>
+        <div class="skill-chip"><div class="skill-dot"></div>Design Sprints</div>
+        <div class="skill-chip"><div class="skill-dot"></div>User Research</div>
+        <div class="skill-chip"><div class="skill-dot"></div>Information Architecture</div>
+        <div class="skill-chip"><div class="skill-dot"></div>Prototyping</div>
+        <div class="skill-chip"><div class="skill-dot"></div>Usability Testing</div>
+        <div class="skill-chip"><div class="skill-dot"></div>Enterprise UX</div>
+        <div class="skill-chip"><div class="skill-dot"></div>iOS &amp; Android</div>
+        <div class="skill-chip"><div class="skill-dot"></div>Data Visualization</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ───────────────────────────────────────────────────────────── -->
+<section id="process">
+  <p class="section-label">How I Work</p>
+  <h2 class="section-title">Process</h2>
+  <p class="section-sub" style="margin:0 auto; text-align:center">
+    Every project is different. The approach isn't.
+  </p>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-title">Discover</div>
+      <div class="step-body">Stakeholder interviews, workflow observation, and competitive analysis. I spend more time understanding the problem than solving it.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-title">Define</div>
+      <div class="step-body">Jobs to be done, user flows, and information architecture. I document decisions so the team can debate the right things.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-title">Design</div>
+      <div class="step-body">Low-fi to high-fi, often in the same week. I run design sprints when speed matters and iterate slowly when it doesn't.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-title">Validate</div>
+      <div class="step-body">Usability tests, A/B tests, and post-launch instrumentation. I track outcomes, not just deliverables.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ───────────────────────────────────────────────────────────── -->
+<section id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">Let's work together.</h2>
+  <a href="mailto:danieltimek@gmail.com" class="contact-email">danieltimek@gmail.com</a>
+  <div class="contact-links">
+    <a href="https://www.linkedin.com/in/dantimek" class="contact-link" target="_blank">LinkedIn</a>
+    <a href="mailto:danieltimek@gmail.com" class="contact-link">Email</a>
+    <a href="#" class="contact-link">Resume</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-copy">© 2025 Dan Timek</div>
+  <div class="footer-made">UX Designer — Available for freelance &amp; full-time roles</div>
+</footer>
+
+<!-- ── MODAL ─────────────────────────────────────────────────────────────── -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
+
+  <!-- Header -->
+  <div class="modal-header">
+    <div class="modal-meta">
+      <div class="modal-company" id="modal-company"></div>
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-pills-row">
+        <div class="modal-tags" id="modal-tags"></div>
+        <div class="modal-roleyear" id="modal-roleyear"></div>
+      </div>
+    </div>
+    <div class="modal-header-controls">
+      <button class="modal-proj-nav" id="modal-proj-prev" aria-label="Previous project">←</button>
+      <button class="modal-proj-nav" id="modal-proj-next" aria-label="Next project">→</button>
+      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+    </div>
+  </div>
+
+  <!-- Full-width image viewer -->
+  <div class="modal-viewer" id="modal-viewer">
+    <button class="modal-nav modal-prev" id="modal-prev">‹</button>
+    <img class="modal-img" id="modal-img" src="" alt="">
+    <button class="modal-nav modal-next" id="modal-next">›</button>
+
+    <!-- About popup (floats over viewer) -->
+    <div class="about-popup" id="about-popup">
+      <div class="about-popup-inner">
+        <button class="about-popup-close" id="about-popup-close">✕</button>
+        <div class="about-popup-eyebrow">About this project</div>
+        <div class="about-popup-title" id="about-title"></div>
+        <div class="about-popup-desc" id="about-desc"></div>
+        <div class="about-popup-contrib-label">Key Contributions</div>
+        <div class="about-popup-contrib" id="about-contrib"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer: thumbnails + About link -->
+  <div class="modal-footer">
+    <div class="modal-thumbs" id="modal-thumbs"></div>
+    <span class="modal-about-link" id="modal-about-link">About ↗</span>
+  </div>
+
+</div>
+
+<script>
+// ── PROJECT DATA ────────────────────────────────────────────────────────────
+const PROJECTS = [
+  {
+    id: 'chatham-pipeline',
+    company: 'Chatham Financial',
+    title: 'Deal Pipeline — Chatham Direct',
+    year: '2019 – 2024',
+    role: 'Lead UX Designer',
+    tags: ['Enterprise', 'Web App', 'Data Visualization', 'CRE'],
+    cover: 'Images/deal-pipeline/My Deals.png',
+    desc: 'Chatham Direct is the flagship web platform for Chatham Financial, serving commercial real estate borrowers, lenders, and advisors. I led the design of the core Deal Pipeline — the primary workspace where advisors track loans from first contact to close.',
+    contrib: '• Redesigned deal table with sortable columns, inline status badges, and quick-access side panel\n• Designed the Notes & Activity feed for multi-user collaboration\n• Built the Sharing & Permissions model, reducing onboarding friction for new team members\n• Conducted 12 usability sessions and 3 rounds of prototype testing',
+    images: [
+      'Images/deal-pipeline/My Deals.png',
+      'Images/deal-pipeline/My Deals-1.png',
+      'Images/deal-pipeline/My Deals-2.png',
+      'Images/deal-pipeline/My Deals-3.png',
+      'Images/deal-pipeline/Side Panel - Overview.png',
+      'Images/deal-pipeline/Side Panel - Overview-1.png',
+      'Images/deal-pipeline/Side Panel - Overview-2.png',
+      'Images/deal-pipeline/My Deals - Side Panel Open, Create New Deal.png',
+      'Images/deal-pipeline/My Deals - Side Panel Open, Deal Information.png',
+      'Images/deal-pipeline/My Deals - Side Panel Open, Notes (active).png',
+      'Images/deal-pipeline/My Deals - Side Panel Open, Notes (default).png',
+      'Images/deal-pipeline/My Deals - Side Panel Open, Sharing Settings.png',
+    ]
+  },
+  {
+    id: 'chatham-cap',
+    company: 'Chatham Financial',
+    title: 'Cap Purchase Workflow',
+    year: '2019',
+    role: 'UX Designer — Design Sprint Lead',
+    tags: ['Design Sprint', 'Enterprise', 'Fintech', 'Workflow'],
+    cover: 'Images/cap-purchase-mockups/01-loan-details.png',
+    desc: 'I ran a 5-day design sprint with developers, business stakeholders, and design leaders to define the optimal approach for digitally transforming the interest rate cap purchase process — a complex financial workflow that previously required extensive manual coordination.',
+    contrib: '• Facilitated a cross-functional design sprint (dev, biz, design) over 5 days\n• Designed a 5-step guided workflow: Loan Details → Provider Quotes → Document Upload → Review → Confirmation\n• Created inline educational content explaining cap pricing concepts to non-expert users\n• Delivered sprint outcome: working prototype validated with 6 advisors',
+    images: [
+      'Images/cap-purchase-mockups/01-loan-details.png',
+      'Images/cap-purchase-mockups/02-pricing-quotes.png',
+      'Images/cap-purchase-mockups/03-document-upload.png',
+      'Images/cap-purchase-mockups/04-review-execute.png',
+      'Images/cap-purchase-mockups/05-confirmation.png',
+    ]
+  },
+  {
+    id: 'ets-toefl',
+    company: 'Educational Testing Service',
+    title: 'TOEFL iBT® iOS App',
+    year: '2017',
+    role: 'UX Design Contractor',
+    tags: ['iOS', 'Mobile', 'Consumer', 'Accessibility'],
+    cover: 'Images/toefl-ios-mockups/01-home.png',
+    desc: 'As a UX contractor at ETS, I designed and tested the native iOS (and Android) app for TOEFL iBT registration — enabling hundreds of thousands of students worldwide to find test centers, purchase official prep materials, and register for the world\'s leading English proficiency test.',
+    contrib: '• Designed end-to-end iOS registration flow: test type selection → location search → calendar → test center → cart → registration info\n• Conducted usability testing with international students in multiple regions\n• Partnered with engineers on accessibility standards (VoiceOver, dynamic type)\n• Delivered final specs and handoff documentation for iOS and Android builds',
+    images: [
+      'Images/toefl-ios-mockups/01-home.png',
+      'Images/toefl-ios-mockups/02-choose-type.png',
+      'Images/toefl-ios-mockups/03-location-search.png',
+      'Images/toefl-ios-mockups/04-calendar.png',
+      'Images/toefl-ios-mockups/05-test-center.png',
+      'Images/toefl-ios-mockups/06-cart.png',
+      'Images/toefl-ios-mockups/07-registration-info.png',
+    ]
+  },
+  {
+    id: 'frbny',
+    company: 'Federal Reserve Bank of New York',
+    title: 'Engines of Bank Supervision',
+    year: '2016',
+    role: 'UX Designer — Internal Tools',
+    tags: ['Enterprise', 'Data Analytics', 'Government', 'FinReg'],
+    cover: 'Images/fed-supervision-mockups/01-dashboard.png',
+    desc: 'Designed internal analyst tools for the New York Fed\'s Supervision & Regulation division, used to monitor the liquidity health of Large Financial Institutions (LFIs) in the Second District — including some of the world\'s largest banks.',
+    contrib: '• Designed the Liquidity Supervision Dashboard consolidating FR 2900 filings, LCR metrics, and alerts for 23 supervised institutions\n• Built the FR 2900 report review interface with cross-validation checks and analyst annotation tools\n• Designed the LCR Analysis view: HQLA composition, net outflow modeling, and 8-quarter trend visualization\n• Created alert queue and case management workflow for supervisory findings',
+    images: [
+      'Images/fed-supervision-mockups/01-dashboard.png',
+      'Images/fed-supervision-mockups/02-fr2900-review.png',
+      'Images/fed-supervision-mockups/03-lcr-analysis.png',
+      'Images/fed-supervision-mockups/04-alert-queue.png',
+      'Images/fed-supervision-mockups/05-findings-workflow.png',
+    ]
+  },
+  {
+    id: 'health-city',
+    company: 'Health City Cayman Islands',
+    title: 'Patient Experience Platform',
+    year: '2015',
+    role: 'UX Designer',
+    tags: ['Healthcare', 'Web', 'International', 'Patient UX'],
+    cover: 'Images/health-city-cayman-islands/screen01.png',
+    desc: 'Health City Cayman Islands is a world-class, multi-specialty hospital offering advanced cardiac, orthopedic, and oncology care to international patients. I designed the patient-facing digital experience to reduce friction in booking and navigating care from abroad.',
+    contrib: '• Redesigned patient-facing website with a focus on international visitors seeking specialty care\n• Designed the Find a Doctor and Request an Appointment flows to streamline care access\n• Created a Tools & Resources hub with health articles, patient testimonials, and video content\n• Improved navigation architecture to clearly separate Clinical Services, Patient & Visitors, and Healthcare Professional sections',
+    images: [
+      'Images/health-city-cayman-islands/screen01.png',
+      'Images/health-city-cayman-islands/screen02.png',
+      'Images/health-city-cayman-islands/screen03.png',
+    ]
+  },
+  {
+    id: 'cayman-tourism',
+    company: 'Cayman Islands Department of Tourism',
+    title: 'Tourism & Destination Website',
+    year: '2015',
+    role: 'UX Designer',
+    tags: ['Tourism', 'Web', 'Consumer', 'Travel'],
+    cover: 'Images/cayman-dive/screen01.png',
+    desc: 'The Cayman Islands Department of Tourism needed a compelling digital destination to convert visitors into travelers. I redesigned the flagship tourism website to showcase the islands\' world-class diving, activities, and hospitality, with integrated trip-planning tools.',
+    contrib: '• Designed the Book Your Getaway planning flow integrated with Orbitz for hotel, flight, and package booking\n• Redesigned the Activities section to surface Cayman\'s unique experiences: diving, snorkeling, stingray city, golf, and wellness\n• Structured content architecture to serve both leisure travelers and destination wedding planners\n• Focused on immersive photography-led layouts that captured the islands\' natural beauty',
+    images: [
+      'Images/cayman-dive/screen01.png',
+      'Images/cayman-dive/screen02.png',
+      'Images/cayman-dive/screen03.png',
+    ]
+  },
+  {
+    id: 'chatham-matrix',
+    company: 'Chatham Financial',
+    title: 'Loan Quote Matrix — Chatham Direct',
+    year: '2021',
+    role: 'Lead UX Designer',
+    tags: ['Enterprise', 'Data Table', 'Fintech', 'CRE'],
+    cover: 'Images/quote-matrix/full matrix.png',
+    desc: 'The Terms Matrix is the centerpiece of the Chatham Direct deal workflow — a multi-lender loan comparison tool that surfaces indicative terms from 8+ capital providers side by side, giving advisors and borrowers a clear, structured view for making financing decisions.',
+    contrib: '• Designed the multi-lender Terms Matrix grid with horizontal scroll, sticky row labels, and status indicators (Indicative vs. Final terms)\n• Built lender selection flow: advisors choose lenders from a managed panel before terms are populated\n• Designed empty and populated matrix states, including inline editable fields for key loan parameters\n• Created field-level edit/read state patterns for Loan Amount, LTV, DSCR, and amortization inputs\n• Connected Terms Matrix to the existing Deal Pipeline detail view and document management tab',
+    images: [
+      'Images/quote-matrix/full matrix.png',
+      'Images/quote-matrix/empty matrix.png',
+      'Images/quote-matrix/intial selection of lenders.png',
+      'Images/quote-matrix/intial selection of lenders-1.png',
+      'Images/quote-matrix/pipeline.png',
+      'Images/quote-matrix/overview.png',
+      'Images/quote-matrix/empty matrix - loan amount - read.png',
+      'Images/quote-matrix/empty matrix - loan amount - edit.png',
+      'Images/quote-matrix/empty matrix - loan amount - read-1.png',
+      'Images/quote-matrix/empty matrix - loan amount - read-2.png',
+    ]
+  },
+  {
+    id: 'kapower',
+    company: 'General Assembly NYC',
+    title: 'Kapower! Webcomics App',
+    year: '2014',
+    role: 'Product Manager & UX Designer',
+    tags: ['Mobile App', 'Product Management', 'Consumer', 'iPad'],
+    cover: 'Images/Kapower/kapower-intro-screen.jpg',
+    desc: 'Kapower! is a webcomics aggregator app I conceived during my Product Management course at General Assembly NYC — a program that covered the full arc of ideating, planning, iterating, and launching digital products. Webcomics are scattered across dozens of independent sites with no central, reader-friendly home. Unlike existing readers that assume you already know what you want, Kapower! introduces a recommendation engine based on reading history and genre preferences, bringing a "Netflix for webcomics" experience to a passionate but underserved audience.',
+    contrib: '• Identified the market gap in webcomic discovery and built the full business case using a Lean Canvas (problem/solution fit, UVP, channels, revenue streams, cost structure)\n• Developed three distinct user personas — the Diehard Reader, the Casual Reader, and the Curious Reader — to ground design decisions in real behavior\n• Designed end-to-end iPad wireframes across 8 screens: splash, account creation, genre preference selection, reading history onboarding, content feed, and comic reader view\n• Defined the recommendation algorithm logic based on genre tags, reading cadence, and comic completion rate',
+    images: [
+      'Images/Kapower/kapower-intro-screen.jpg',
+      'Images/Kapower/kapower-lean-canvas.jpg',
+      'Images/Kapower/kapower-personas.jpg',
+      'Images/Kapower/kapower-wireframes.jpg',
+    ]
+  },
+  {
+    id: 'nj-wine-app',
+    company: 'Garden State Wine Growers Association',
+    title: 'Wine Trails Passport App',
+    year: '2014',
+    role: 'UX Designer',
+    tags: ['Mobile App', 'iOS', 'Consumer', 'Location-Based'],
+    cover: 'Images/NJ Wine App/NJWine-App-Promo.jpg',
+    desc: 'Designed the Wine Trails Passport — a location-based iOS app for the Garden State Wine Growers Association that automatically checks users into NJ wineries using GPS. The app digitally replaced the paper stamp passport program, gamifying the experience with badges and a winery completion challenge across all 43 NJ wineries.',
+    contrib: '• Conducted user research and developed 5 personas spanning casual wine enthusiasts to dedicated connoisseurs\n• Designed end-to-end iOS app: lock screen notifications, home, GPS check-in flow, stamp confirmation, winery directory, badges\n• Created hand-drawn wireframes across all key screens and interaction states\n• Redesigned the GSWGA website to surface events, wineries, wine trails, and the passport program\n• Delivered responsive web and mobile designs across desktop and mobile breakpoints',
+    images: [
+      'Images/NJ Wine App/NJWine-App-Promo.jpg',
+      'Images/NJ Wine App/wine-app-main.jpg',
+      'Images/NJ Wine App/wine-app-wireframes.jpg',
+      'Images/NJ Wine App/wine-app-personas.jpg',
+      'Images/NJ Wine App/GSWGA-homepage.jpg',
+      'Images/NJ Wine App/NJWineGrowers-Promo.jpg',
+      'Images/NJ Wine App/GSWGA-Pages.jpg',
+    ]
+  },
+];
+
+// ── BUILD TILES ──────────────────────────────────────────────────────────────
+function buildGrid() {
+  const grid = document.getElementById('projectGrid');
+  PROJECTS.forEach((p, i) => {
+    const tile = document.createElement('div');
+    tile.className = 'tile';
+    tile.setAttribute('data-index', i);
+
+    const isPlaceholder = !p.cover;
+    const hasImages = p.images.length > 0;
+
+    if (isPlaceholder) {
+      tile.innerHTML = `
+        <div class="tile-placeholder">
+          <div class="tile-placeholder-icon">◻</div>
+          <div class="tile-placeholder-text">Coming Soon</div>
+        </div>
+        <div class="tile-overlay" style="background:none">
+          <div class="tile-tags"></div>
+          <div class="tile-company">${p.company || 'New Case Study'}</div>
+          <div class="tile-title">${p.title || 'In Progress'}</div>
+        </div>`;
+    } else {
+      const tagsHTML = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
+      tile.innerHTML = `
+        <img class="tile-img" src="${p.cover}" alt="${p.title}" loading="lazy">
+        <div class="tile-overlay">
+          <div class="tile-tags">${tagsHTML}</div>
+          <div class="tile-company">${p.company}</div>
+          <div class="tile-title">${p.title}</div>
+          <div class="tile-desc">${p.desc.substring(0, 130)}…</div>
+          <div class="tile-cta">
+            View Case Study
+            <span class="tile-cta-arrow">→</span>
+          </div>
+        </div>`;
+    }
+
+    if (hasImages) {
+      tile.addEventListener('click', () => openModal(i));
+      tile.style.cursor = 'pointer';
+    } else {
+      tile.style.cursor = 'default';
+    }
+
+    grid.appendChild(tile);
+  });
+}
+
+// ── MODAL ────────────────────────────────────────────────────────────────────
+let currentProject    = null;
+let currentProjectIdx = 0;
+let currentImgIdx     = 0;
+
+function openModal(projectIdx) {
+  const p = PROJECTS[projectIdx];
+  if (!p.images.length) return;
+
+  currentProject    = p;
+  currentProjectIdx = projectIdx;
+  currentImgIdx     = 0;
+
+  // Update project prev/next button state
+  const validIdxs = PROJECTS.map((p, i) => p.images.length ? i : -1).filter(i => i >= 0);
+  const pos = validIdxs.indexOf(projectIdx);
+  document.getElementById('modal-proj-prev').disabled = pos <= 0;
+  document.getElementById('modal-proj-next').disabled = pos >= validIdxs.length - 1;
+
+  // Header
+  document.getElementById('modal-company').textContent  = p.company;
+  document.getElementById('modal-title').textContent    = p.title;
+  document.getElementById('modal-roleyear').textContent = p.role + ' · ' + p.year;
+
+  // Tags / pills
+  document.getElementById('modal-tags').innerHTML =
+    p.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+  // About popup content
+  document.getElementById('about-title').textContent   = p.title;
+  document.getElementById('about-desc').textContent    = p.desc;
+  document.getElementById('about-contrib').innerHTML   = p.contrib.replace(/\n/g, '<br>');
+
+  // Thumbnails
+  const thumbsEl = document.getElementById('modal-thumbs');
+  thumbsEl.innerHTML = p.images.map((src, i) =>
+    `<div class="modal-thumb ${i===0?'active':''}" data-i="${i}">
+       <img src="${src}" alt="" loading="lazy">
+     </div>`
+  ).join('');
+  thumbsEl.querySelectorAll('.modal-thumb').forEach(t =>
+    t.addEventListener('click', () => setImage(parseInt(t.dataset.i)))
+  );
+
+  // Hide about popup on open
+  document.getElementById('about-popup').classList.remove('open');
+
+  setImage(0);
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.getElementById('about-popup').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function setImage(idx) {
+  if (!currentProject) return;
+  const imgs = currentProject.images;
+  idx = (idx + imgs.length) % imgs.length;
+  currentImgIdx = idx;
+  document.getElementById('modal-img').src = imgs[idx];
+  document.querySelectorAll('.modal-thumb').forEach((t, i) =>
+    t.classList.toggle('active', i === idx)
+  );
+  const activeThumb = document.querySelector('.modal-thumb.active');
+  if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+}
+
+// About popup toggle
+document.getElementById('modal-about-link').addEventListener('click', () => {
+  document.getElementById('about-popup').classList.add('open');
+});
+document.getElementById('about-popup-close').addEventListener('click', () => {
+  document.getElementById('about-popup').classList.remove('open');
+});
+document.getElementById('about-popup').addEventListener('click', e => {
+  if (e.target === document.getElementById('about-popup'))
+    document.getElementById('about-popup').classList.remove('open');
+});
+
+// Project prev/next navigation
+function navigateProject(dir) {
+  const validIdxs = PROJECTS.map((p, i) => p.images.length ? i : -1).filter(i => i >= 0);
+  const pos = validIdxs.indexOf(currentProjectIdx);
+  const next = validIdxs[pos + dir];
+  if (next !== undefined) openModal(next);
+}
+document.getElementById('modal-proj-prev').addEventListener('click', () => navigateProject(-1));
+document.getElementById('modal-proj-next').addEventListener('click', () => navigateProject(1));
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal')) closeModal();
+});
+document.getElementById('modal-prev').addEventListener('click', () => setImage(currentImgIdx - 1));
+document.getElementById('modal-next').addEventListener('click', () => setImage(currentImgIdx + 1));
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('modal').classList.contains('open')) return;
+  if (e.key === 'Escape') {
+    if (document.getElementById('about-popup').classList.contains('open'))
+      document.getElementById('about-popup').classList.remove('open');
+    else closeModal();
+  }
+  if (e.key === 'ArrowLeft')  setImage(currentImgIdx - 1);
+  if (e.key === 'ArrowRight') setImage(currentImgIdx + 1);
+});
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+buildGrid();
+</script>
+</body>
+</html>
