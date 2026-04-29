@@ -1,0 +1,26 @@
+{
+  // Worker name — must match the Worker name in the Cloudflare dashboard.
+  // Lowercase, hyphens only, no spaces.
+  "name": "dan-timek-portfolio",
+
+  // Pin Workers runtime behavior to this date. Update only when you intend to.
+  "compatibility_date": "2026-04-29",
+
+  // Static assets configuration — serves files directly from your repo.
+  // No build step, no Worker script needed.
+  "assets": {
+    // Folder containing index.html and all assets (images, css, js).
+    // "./" = repo root. Change to "./public" or "./dist" if your site lives in a subfolder.
+    "directory": "./",
+
+    // What to do when a path doesn't match a file.
+    // "404-page" serves /404.html for missing routes (good for static sites).
+    // Use "single-page-application" instead if this were a SPA with client-side routing.
+    "not_found_handling": "404-page"
+  },
+
+  // Observability: turn on logs in the Cloudflare dashboard.
+  "observability": {
+    "enabled": true
+  }
+}

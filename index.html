@@ -366,16 +366,21 @@ section { padding: 100px 48px; }
   display: flex; align-items: center; justify-content: center;
 }
 .about-monogram {
-  font-family: 'DM Serif Display', Georgia, serif;
-  font-size: 120px; font-style: italic;
-  color: var(--accent);
-  opacity: 0.18;
-  user-select: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
 .about-label {
   position: absolute; bottom: 24px; left: 24px;
   font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--text-muted);
+  text-transform: uppercase; color: var(--text);
+  padding: 8px 14px;
+  background: rgba(10,10,10,0.7);
+  backdrop-filter: blur(8px);
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.12);
 }
 .about-body { font-size: 16px; color: var(--text-sec); line-height: 1.8; }
 .about-body p + p { margin-top: 18px; }
@@ -704,7 +709,7 @@ footer {
 <section id="about">
   <div class="about-inner">
     <div class="about-visual">
-      <div class="about-monogram">DT</div>
+      <img class="about-monogram" src="image/12_45_07_PM.png" alt="Dan Timek">
       <div class="about-label">Dan Timek — UX Designer</div>
     </div>
     <div>
@@ -712,8 +717,8 @@ footer {
       <h2 class="section-title">Designer<br>with range.</h2>
       <div class="about-body">
         <p>
-          I started as a <strong>UX designer</strong> and have been a
-          <strong>product manager</strong> — which means I can hold a P&L
+          <strong>Strategic UX designer</strong> with a background in
+          <strong>product management</strong>, which means I can hold a P&amp;L
           conversation with a CFO and sketch wireframes in the same afternoon.
           I thrive at the intersection of complex data and human decision-making.
         </p>
@@ -791,7 +796,6 @@ footer {
 <!-- ── FOOTER ────────────────────────────────────────────────────────────── -->
 <footer>
   <div class="footer-copy">© 2025 Dan Timek</div>
-  <div class="footer-made">UX Designer — Available for freelance &amp; full-time roles</div>
 </footer>
 
 <!-- ── MODAL ─────────────────────────────────────────────────────────────── -->
@@ -851,22 +855,22 @@ const PROJECTS = [
     year: '2019 – 2024',
     role: 'Lead UX Designer',
     tags: ['Enterprise', 'Web App', 'Data Visualization', 'CRE'],
-    cover: 'Images/deal-pipeline/My Deals.png',
+    cover: 'image/deal-pipeline/My-Deals.png',
     desc: 'Chatham Direct is the flagship web platform for Chatham Financial, serving commercial real estate borrowers, lenders, and advisors. I led the design of the core Deal Pipeline — the primary workspace where advisors track loans from first contact to close.',
     contrib: '• Redesigned deal table with sortable columns, inline status badges, and quick-access side panel\n• Designed the Notes & Activity feed for multi-user collaboration\n• Built the Sharing & Permissions model, reducing onboarding friction for new team members\n• Conducted 12 usability sessions and 3 rounds of prototype testing',
     images: [
-      'Images/deal-pipeline/My Deals.png',
-      'Images/deal-pipeline/My Deals-1.png',
-      'Images/deal-pipeline/My Deals-2.png',
-      'Images/deal-pipeline/My Deals-3.png',
-      'Images/deal-pipeline/Side Panel - Overview.png',
-      'Images/deal-pipeline/Side Panel - Overview-1.png',
-      'Images/deal-pipeline/Side Panel - Overview-2.png',
-      'Images/deal-pipeline/My Deals - Side Panel Open, Create New Deal.png',
-      'Images/deal-pipeline/My Deals - Side Panel Open, Deal Information.png',
-      'Images/deal-pipeline/My Deals - Side Panel Open, Notes (active).png',
-      'Images/deal-pipeline/My Deals - Side Panel Open, Notes (default).png',
-      'Images/deal-pipeline/My Deals - Side Panel Open, Sharing Settings.png',
+      'image/deal-pipeline/My-Deals.png',
+      'image/deal-pipeline/My-Deals-1.png',
+      'image/deal-pipeline/My-Deals-2.png',
+      'image/deal-pipeline/My-Deals-3.png',
+      'image/deal-pipeline/Side-Panel-Overview.png',
+      'image/deal-pipeline/Side-Panel-Overview-1.png',
+      'image/deal-pipeline/Side-Panel-Overview-2.png',
+      'image/deal-pipeline/My-Deals-Side-Panel-Open-Create-New-Deal.png',
+      'image/deal-pipeline/My-Deals-Side-Panel-Open-Deal-Information.png',
+      'image/deal-pipeline/My-Deals-Side-Panel-Open-Notes-active.png',
+      'image/deal-pipeline/My-Deals-Side-Panel-Open-Notes-default.png',
+      'image/deal-pipeline/My-Deals-Side-Panel-Open-Sharing-Settings.png',
     ]
   },
   {
@@ -876,15 +880,15 @@ const PROJECTS = [
     year: '2019',
     role: 'UX Designer — Design Sprint Lead',
     tags: ['Design Sprint', 'Enterprise', 'Fintech', 'Workflow'],
-    cover: 'Images/cap-purchase-mockups/01-loan-details.png',
+    cover: 'image/cap-purchase-mockups/01-loan-details.png',
     desc: 'I ran a 5-day design sprint with developers, business stakeholders, and design leaders to define the optimal approach for digitally transforming the interest rate cap purchase process — a complex financial workflow that previously required extensive manual coordination.',
     contrib: '• Facilitated a cross-functional design sprint (dev, biz, design) over 5 days\n• Designed a 5-step guided workflow: Loan Details → Provider Quotes → Document Upload → Review → Confirmation\n• Created inline educational content explaining cap pricing concepts to non-expert users\n• Delivered sprint outcome: working prototype validated with 6 advisors',
     images: [
-      'Images/cap-purchase-mockups/01-loan-details.png',
-      'Images/cap-purchase-mockups/02-pricing-quotes.png',
-      'Images/cap-purchase-mockups/03-document-upload.png',
-      'Images/cap-purchase-mockups/04-review-execute.png',
-      'Images/cap-purchase-mockups/05-confirmation.png',
+      'image/cap-purchase-mockups/01-loan-details.png',
+      'image/cap-purchase-mockups/02-pricing-quotes.png',
+      'image/cap-purchase-mockups/03-document-upload.png',
+      'image/cap-purchase-mockups/04-review-execute.png',
+      'image/cap-purchase-mockups/05-confirmation.png',
     ]
   },
   {
@@ -894,17 +898,17 @@ const PROJECTS = [
     year: '2017',
     role: 'UX Design Contractor',
     tags: ['iOS', 'Mobile', 'Consumer', 'Accessibility'],
-    cover: 'Images/toefl-ios-mockups/01-home.png',
+    cover: 'image/toefl-ios-mockups/01-home.png',
     desc: 'As a UX contractor at ETS, I designed and tested the native iOS (and Android) app for TOEFL iBT registration — enabling hundreds of thousands of students worldwide to find test centers, purchase official prep materials, and register for the world\'s leading English proficiency test.',
     contrib: '• Designed end-to-end iOS registration flow: test type selection → location search → calendar → test center → cart → registration info\n• Conducted usability testing with international students in multiple regions\n• Partnered with engineers on accessibility standards (VoiceOver, dynamic type)\n• Delivered final specs and handoff documentation for iOS and Android builds',
     images: [
-      'Images/toefl-ios-mockups/01-home.png',
-      'Images/toefl-ios-mockups/02-choose-type.png',
-      'Images/toefl-ios-mockups/03-location-search.png',
-      'Images/toefl-ios-mockups/04-calendar.png',
-      'Images/toefl-ios-mockups/05-test-center.png',
-      'Images/toefl-ios-mockups/06-cart.png',
-      'Images/toefl-ios-mockups/07-registration-info.png',
+      'image/toefl-ios-mockups/01-home.png',
+      'image/toefl-ios-mockups/02-choose-type.png',
+      'image/toefl-ios-mockups/03-location-search.png',
+      'image/toefl-ios-mockups/04-calendar.png',
+      'image/toefl-ios-mockups/05-test-center.png',
+      'image/toefl-ios-mockups/06-cart.png',
+      'image/toefl-ios-mockups/07-registration-info.png',
     ]
   },
   {
@@ -914,15 +918,15 @@ const PROJECTS = [
     year: '2016',
     role: 'UX Designer — Internal Tools',
     tags: ['Enterprise', 'Data Analytics', 'Government', 'FinReg'],
-    cover: 'Images/fed-supervision-mockups/01-dashboard.png',
+    cover: 'image/fed-supervision-mockups/01-dashboard.png',
     desc: 'Designed internal analyst tools for the New York Fed\'s Supervision & Regulation division, used to monitor the liquidity health of Large Financial Institutions (LFIs) in the Second District — including some of the world\'s largest banks.',
     contrib: '• Designed the Liquidity Supervision Dashboard consolidating FR 2900 filings, LCR metrics, and alerts for 23 supervised institutions\n• Built the FR 2900 report review interface with cross-validation checks and analyst annotation tools\n• Designed the LCR Analysis view: HQLA composition, net outflow modeling, and 8-quarter trend visualization\n• Created alert queue and case management workflow for supervisory findings',
     images: [
-      'Images/fed-supervision-mockups/01-dashboard.png',
-      'Images/fed-supervision-mockups/02-fr2900-review.png',
-      'Images/fed-supervision-mockups/03-lcr-analysis.png',
-      'Images/fed-supervision-mockups/04-alert-queue.png',
-      'Images/fed-supervision-mockups/05-findings-workflow.png',
+      'image/fed-supervision-mockups/01-dashboard.png',
+      'image/fed-supervision-mockups/02-fr2900-review.png',
+      'image/fed-supervision-mockups/03-lcr-analysis.png',
+      'image/fed-supervision-mockups/04-alert-queue.png',
+      'image/fed-supervision-mockups/05-findings-workflow.png',
     ]
   },
   {
@@ -932,13 +936,13 @@ const PROJECTS = [
     year: '2015',
     role: 'UX Designer',
     tags: ['Healthcare', 'Web', 'International', 'Patient UX'],
-    cover: 'Images/health-city-cayman-islands/screen01.png',
+    cover: 'image/health-city-cayman-islands/screen01.png',
     desc: 'Health City Cayman Islands is a world-class, multi-specialty hospital offering advanced cardiac, orthopedic, and oncology care to international patients. I designed the patient-facing digital experience to reduce friction in booking and navigating care from abroad.',
     contrib: '• Redesigned patient-facing website with a focus on international visitors seeking specialty care\n• Designed the Find a Doctor and Request an Appointment flows to streamline care access\n• Created a Tools & Resources hub with health articles, patient testimonials, and video content\n• Improved navigation architecture to clearly separate Clinical Services, Patient & Visitors, and Healthcare Professional sections',
     images: [
-      'Images/health-city-cayman-islands/screen01.png',
-      'Images/health-city-cayman-islands/screen02.png',
-      'Images/health-city-cayman-islands/screen03.png',
+      'image/health-city-cayman-islands/screen01.png',
+      'image/health-city-cayman-islands/screen02.png',
+      'image/health-city-cayman-islands/screen03.png',
     ]
   },
   {
@@ -948,13 +952,13 @@ const PROJECTS = [
     year: '2015',
     role: 'UX Designer',
     tags: ['Tourism', 'Web', 'Consumer', 'Travel'],
-    cover: 'Images/cayman-dive/screen01.png',
+    cover: 'image/cayman-dive/screen01.png',
     desc: 'The Cayman Islands Department of Tourism needed a compelling digital destination to convert visitors into travelers. I redesigned the flagship tourism website to showcase the islands\' world-class diving, activities, and hospitality, with integrated trip-planning tools.',
     contrib: '• Designed the Book Your Getaway planning flow integrated with Orbitz for hotel, flight, and package booking\n• Redesigned the Activities section to surface Cayman\'s unique experiences: diving, snorkeling, stingray city, golf, and wellness\n• Structured content architecture to serve both leisure travelers and destination wedding planners\n• Focused on immersive photography-led layouts that captured the islands\' natural beauty',
     images: [
-      'Images/cayman-dive/screen01.png',
-      'Images/cayman-dive/screen02.png',
-      'Images/cayman-dive/screen03.png',
+      'image/cayman-dive/screen01.png',
+      'image/cayman-dive/screen02.png',
+      'image/cayman-dive/screen03.png',
     ]
   },
   {
@@ -964,20 +968,20 @@ const PROJECTS = [
     year: '2021',
     role: 'Lead UX Designer',
     tags: ['Enterprise', 'Data Table', 'Fintech', 'CRE'],
-    cover: 'Images/quote-matrix/full matrix.png',
+    cover: 'image/quote-matrix/full-matrix.png',
     desc: 'The Terms Matrix is the centerpiece of the Chatham Direct deal workflow — a multi-lender loan comparison tool that surfaces indicative terms from 8+ capital providers side by side, giving advisors and borrowers a clear, structured view for making financing decisions.',
     contrib: '• Designed the multi-lender Terms Matrix grid with horizontal scroll, sticky row labels, and status indicators (Indicative vs. Final terms)\n• Built lender selection flow: advisors choose lenders from a managed panel before terms are populated\n• Designed empty and populated matrix states, including inline editable fields for key loan parameters\n• Created field-level edit/read state patterns for Loan Amount, LTV, DSCR, and amortization inputs\n• Connected Terms Matrix to the existing Deal Pipeline detail view and document management tab',
     images: [
-      'Images/quote-matrix/full matrix.png',
-      'Images/quote-matrix/empty matrix.png',
-      'Images/quote-matrix/intial selection of lenders.png',
-      'Images/quote-matrix/intial selection of lenders-1.png',
-      'Images/quote-matrix/pipeline.png',
-      'Images/quote-matrix/overview.png',
-      'Images/quote-matrix/empty matrix - loan amount - read.png',
-      'Images/quote-matrix/empty matrix - loan amount - edit.png',
-      'Images/quote-matrix/empty matrix - loan amount - read-1.png',
-      'Images/quote-matrix/empty matrix - loan amount - read-2.png',
+      'image/quote-matrix/full-matrix.png',
+      'image/quote-matrix/empty-matrix.png',
+      'image/quote-matrix/intial-selection-lenders.png',
+      'image/quote-matrix/intial-selection-lenders-1.png',
+      'image/quote-matrix/pipeline.png',
+      'image/quote-matrix/overview.png',
+      'image/quote-matrix/empty-matrix-loan-amount-read.png',
+      'image/quote-matrix/empty-matrix-loan-amount-edit.png',
+      'image/quote-matrix/empty-matrix-loan-amount-read-1.png',
+      'image/quote-matrix/empty-matrix-loan-amount-read-2.png',
     ]
   },
   {
@@ -987,14 +991,14 @@ const PROJECTS = [
     year: '2014',
     role: 'Product Manager & UX Designer',
     tags: ['Mobile App', 'Product Management', 'Consumer', 'iPad'],
-    cover: 'Images/Kapower/kapower-intro-screen.jpg',
+    cover: 'image/Kapower/kapower-intro-screen.jpg',
     desc: 'Kapower! is a webcomics aggregator app I conceived during my Product Management course at General Assembly NYC — a program that covered the full arc of ideating, planning, iterating, and launching digital products. Webcomics are scattered across dozens of independent sites with no central, reader-friendly home. Unlike existing readers that assume you already know what you want, Kapower! introduces a recommendation engine based on reading history and genre preferences, bringing a "Netflix for webcomics" experience to a passionate but underserved audience.',
     contrib: '• Identified the market gap in webcomic discovery and built the full business case using a Lean Canvas (problem/solution fit, UVP, channels, revenue streams, cost structure)\n• Developed three distinct user personas — the Diehard Reader, the Casual Reader, and the Curious Reader — to ground design decisions in real behavior\n• Designed end-to-end iPad wireframes across 8 screens: splash, account creation, genre preference selection, reading history onboarding, content feed, and comic reader view\n• Defined the recommendation algorithm logic based on genre tags, reading cadence, and comic completion rate',
     images: [
-      'Images/Kapower/kapower-intro-screen.jpg',
-      'Images/Kapower/kapower-lean-canvas.jpg',
-      'Images/Kapower/kapower-personas.jpg',
-      'Images/Kapower/kapower-wireframes.jpg',
+      'image/Kapower/kapower-intro-screen.jpg',
+      'image/Kapower/kapower-lean-canvas.jpg',
+      'image/Kapower/kapower-personas.jpg',
+      'image/Kapower/kapower-wireframes.jpg',
     ]
   },
   {
@@ -1004,17 +1008,17 @@ const PROJECTS = [
     year: '2014',
     role: 'UX Designer',
     tags: ['Mobile App', 'iOS', 'Consumer', 'Location-Based'],
-    cover: 'Images/NJ Wine App/NJWine-App-Promo.jpg',
+    cover: 'image/nj-wine-app/NJWine-App-Promo.jpg',
     desc: 'Designed the Wine Trails Passport — a location-based iOS app for the Garden State Wine Growers Association that automatically checks users into NJ wineries using GPS. The app digitally replaced the paper stamp passport program, gamifying the experience with badges and a winery completion challenge across all 43 NJ wineries.',
     contrib: '• Conducted user research and developed 5 personas spanning casual wine enthusiasts to dedicated connoisseurs\n• Designed end-to-end iOS app: lock screen notifications, home, GPS check-in flow, stamp confirmation, winery directory, badges\n• Created hand-drawn wireframes across all key screens and interaction states\n• Redesigned the GSWGA website to surface events, wineries, wine trails, and the passport program\n• Delivered responsive web and mobile designs across desktop and mobile breakpoints',
     images: [
-      'Images/NJ Wine App/NJWine-App-Promo.jpg',
-      'Images/NJ Wine App/wine-app-main.jpg',
-      'Images/NJ Wine App/wine-app-wireframes.jpg',
-      'Images/NJ Wine App/wine-app-personas.jpg',
-      'Images/NJ Wine App/GSWGA-homepage.jpg',
-      'Images/NJ Wine App/NJWineGrowers-Promo.jpg',
-      'Images/NJ Wine App/GSWGA-Pages.jpg',
+      'image/nj-wine-app/NJWine-App-Promo.jpg',
+      'image/nj-wine-app/wine-app-main.jpg',
+      'image/nj-wine-app/wine-app-wireframes.jpg',
+      'image/nj-wine-app/wine-app-personas.jpg',
+      'image/nj-wine-app/GSWGA-homepage.jpg',
+      'image/nj-wine-app/NJWineGrowers-Promo.jpg',
+      'image/nj-wine-app/GSWGA-Pages.jpg',
     ]
   },
 ];
