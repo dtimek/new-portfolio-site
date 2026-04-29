@@ -1,7 +1,7 @@
 {
   // Worker name — must match the Worker name in the Cloudflare dashboard.
   // Lowercase, hyphens only, no spaces.
-  "name": "portfolio-site",
+  "name": "new-portfolio-site",
 
   // Pin Workers runtime behavior to this date. Update only when you intend to.
   "compatibility_date": "2026-04-29",
